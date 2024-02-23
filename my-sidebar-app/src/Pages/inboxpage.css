@@ -1,0 +1,8 @@
+.content {
+  transition: margin-left 0.5s;
+  margin-left: 0;
+}
+
+.content.open {
+  margin-left: 240px; /* Adjust this value according to your sidebar width */
+}
