@@ -1,10 +1,12 @@
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -83,21 +85,32 @@ const Minidrawer = () => {
                 duration: theme.transitions.duration.enteringScreen,
               }),
           }),
+          height: 100, // Set header height to 50px
+          bgcolor: "#101c54", // Set header color to dark blue
+          marginBottom: "20px",
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: "36px",
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
+        <Toolbar sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            {/* Add Bell Icon for Notifications */}
+            <IconButton color="inherit">
+              <NotificationsIcon />
+            </IconButton>
+            {/* Add User Profile Image */}
+            <Avatar alt="User Profile" sx={{ width: 40, height: 40 }} />
+            {/* Open/Close Button */}
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={open ? handleDrawerClose : handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginLeft: 1,
+              }}
+            >
+              {open ? <MenuIcon /> : <MenuIcon />}
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -119,16 +132,16 @@ const Minidrawer = () => {
         }}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
+          <Card variant="outlined" sx={{ borderRadius: "20px" }}>
+            <CardContent style={{ width: "270px" }}>
+              <Avatar sx={{ width: 30, height: 27 }} />
+              <Typography variant="h6">Logo</Typography>
+            </CardContent>
+          </Card>
         </DrawerHeader>
-        <Divider />
-        <List>
+
+        <List style={{ marginTop: "40px" }}>
+          <Divider />
           {[
             { text: "Inbox", link: "/inbox", icon: <InboxIcon /> },
             { text: "Starred", link: "/starred", icon: <MailIcon /> },
@@ -158,35 +171,9 @@ const Minidrawer = () => {
         sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
       >
         <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <div className="text" style={{ marginTop: "30px" }}></div>
+        <Typography paragraph>sample</Typography>
+        <Typography paragraph>sampl 2</Typography>
       </Box>
     </Box>
   );
